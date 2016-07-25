@@ -1,0 +1,21 @@
+{
+  "name": "html2yml",
+  "version": "1.0.0",
+  "description": "",
+  "main": "js/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "jQuery",
+    "converter",
+    "HTML",
+    "YML"
+  ],
+  "author": "Lukas Chen",
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "^3.1.0",
+    "material-design-lite": "^1.1.3"
+  }
+}

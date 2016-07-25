@@ -1,0 +1,14 @@
+.container {
+  max-width:1400px;
+  padding:0 25px;
+  margin: 0 auto;
+}
+
+pre {
+  word-wrap: break-word;
+  padding: 10px;
+  margin: 10px;
+  background: #eee;
+  line-height: 1.7;
+  overflow-x: auto;
+}
