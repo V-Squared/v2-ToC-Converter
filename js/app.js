@@ -16,7 +16,7 @@ $('#convert').click(function() {
     if ($(this).next().is("ul")) {
 
       var subitem = [];
-      var subitemYml = "\n    subitem:"
+      var subitemYml = "\n    subitems:"
       $($(this).next().children("li").children("a")).each(function() {
         var href = $(this).attr("href").replace("#",'');
 
@@ -35,7 +35,7 @@ $('#convert').click(function() {
       mylist.push({
         "name": $(this).text(),
         "url": href,
-        "subitem": subitem
+        "subitems": subitem
       });
 
     } else {
