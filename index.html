@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-  <title>HTML2YML</title>
+  <title>ToC-converter</title>
 
   <link rel="stylesheet" href="node_modules/material-design-lite/material.min.css">
   <link rel="stylesheet" href="css/style.css">
@@ -18,7 +18,9 @@
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
       <!-- Title -->
-      <span class="mdl-layout-title">ToC Converter <small>v02</small></span>
+      <div class="container">
+        <div class="mdl-layout-title">ToC Converter <small>v02</small></div>
+      </div>
     </div>
   </header>
 
@@ -40,10 +42,12 @@
       <p>If you are interested in the source code: <a href="https://github.com/V-Squared/v2-ToC-Converter">GitHub > V-Squared > v2-ToC-Converter</a>. Report Bugs or Feature Requests: <a href="https://github.com/V-Squared/V-Squared.github.io/issues/130">GitHub > V-Squared > Issue</a></p>
 
       <div style="margin-bottom: 20px;">
-      <textarea>Insert your ToC as HTML ul list</textarea>
+      <textarea id="input">Insert your ToC as HTML ul list</textarea>
         </div>
 
       <button id="convert" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Convert</button>
+      <button id="select" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--accent">Select</button>
+      <button id="reset" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--primary">Reset</button>
 
       <div class="list"></div>
 

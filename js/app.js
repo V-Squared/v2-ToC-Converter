@@ -1,3 +1,25 @@
+// Select Plugin
+
+$.fn.clickSelect = function(element) {
+  return $(this).on('click',function() {
+    var doc = document,
+      text = doc.getElementById(element),
+      range,
+      selection;
+    if (doc.body.createTextRange) {
+      range = document.body.createTextRange();
+      range.moveToElementText(text);
+      range.select();
+    } else if (window.getSelection) {
+      selection = window.getSelection();
+      range = document.createRange();
+      range.selectNodeContents(text);
+      selection.removeAllRanges();
+      selection.addRange(range);
+    }
+  })
+};
+
 $('#convert').click(function() {
   var mylist = [];
 
@@ -61,3 +83,9 @@ $('#convert').click(function() {
   $("#result").empty();
   $("#result").html(JSON.stringify(mylist));
 });
+$("#reset").click(function() {
+  $("#input").val("Insert your ToC as HTML ul list");
+  $("#result").text("JSON ToC will show here");
+  $("#resultYml").text("YAML ToC will show here");
+});
+$("#select").clickSelect("input");
