@@ -25,6 +25,8 @@ $('#convert').click(function() {
 
   var yml = "contents:";
 
+  var markdown = "";
+
   var result = $.parseHTML($('textarea').val());
 
   $(".list").empty();
@@ -38,11 +40,14 @@ $('#convert').click(function() {
     if ($(this).next().is("ul")) {
 
       var subitem = [];
-      var subitemYml = "\n    subitems:"
+      var subitemYml = "\n    subitems:";
+      var subitemMarkdown = "";
       $($(this).next().children("li").children("a")).each(function() {
         var href = $(this).attr("href").replace("#",'');
 
         subitemYml += "\n      - name: " + $(this).text() + "\n        url: " + href;
+
+        subitemMarkdown += "  - [" + $(this).text() + "](#" + href + ")\n";
 
         subitem.push({
           "name": $(this).text(),
@@ -53,6 +58,8 @@ $('#convert').click(function() {
       var href = $(this).attr("href").replace("#",'');
 
       yml += "\n  - name: " + $(this).text() + "\n    url: " + href + subitemYml;
+
+      markdown += "- [" + $(this).text() + "](#" + href + ")\n" + subitemMarkdown;
 
       mylist.push({
         "name": $(this).text(),
@@ -65,7 +72,9 @@ $('#convert').click(function() {
 
       yml += "\n  - name: " + $(this).text() + "\n    url: " + href;
 
-      console.log(yml);
+      markdown += "- [" + $(this).text() + "](#" + href + ")\n";
+
+      console.log(markdown);
 
       mylist.push({
         "name": $(this).text(),
@@ -78,6 +87,8 @@ $('#convert').click(function() {
   $("#resultYml").empty();
 
   $("#resultYml").text(yml);
+
+  $("#resultMarkdown").text(markdown);
 
 // for result only
   $("#result").empty();
