@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cb109b4c-52ec-468d-816d-2b5febbbb31d" name="Default" comment="update select position">
+    <list default="true" id="cb109b4c-52ec-468d-816d-2b5febbbb31d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app.js" afterPath="$PROJECT_DIR$/js/app.js" />
     </list>
     <ignored path="html2yml.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,7 +34,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="420">
@@ -46,11 +46,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="603">
-              <caret line="105" column="28" selection-start-line="105" selection-start-column="28" selection-end-line="105" selection-end-column="28" />
+            <state relative-caret-position="168">
+              <caret line="6" column="52" selection-start-line="6" selection-start-column="52" selection-end-line="6" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -86,8 +86,8 @@
         <option value="$PROJECT_DIR$/node_modules/material-design-lite/material.min.css" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/css/style.css" />
-        <option value="$PROJECT_DIR$/js/app.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/app.js" />
       </list>
     </option>
   </component>
@@ -248,7 +248,7 @@
       <workItem from="1469413571993" duration="4969000" />
       <workItem from="1469505174977" duration="1807000" />
       <workItem from="1470834119539" duration="1032000" />
-      <workItem from="1470879329623" duration="12362000" />
+      <workItem from="1470879329623" duration="13321000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1469505549786</created>
@@ -292,11 +292,18 @@
       <option name="project" value="LOCAL" />
       <updated>1470908316700</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="change version number">
+      <created>1470909064525</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1470909064525</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22923000" />
+    <option name="totallyTimeSpent" value="23882000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -373,7 +380,8 @@
     <MESSAGE value="fixed markdown not empty" />
     <MESSAGE value="added select for every output" />
     <MESSAGE value="update select position" />
-    <option name="LAST_COMMIT_MESSAGE" value="update select position" />
+    <MESSAGE value="change version number" />
+    <option name="LAST_COMMIT_MESSAGE" value="change version number" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -588,14 +596,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="603">
-          <caret line="105" column="28" selection-start-line="105" selection-start-column="28" selection-end-line="105" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -603,6 +603,14 @@
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="6" column="52" selection-start-line="6" selection-start-column="52" selection-end-line="6" selection-end-column="52" />
+          <folding />
         </state>
       </provider>
     </entry>

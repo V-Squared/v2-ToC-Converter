@@ -1,3 +1,13 @@
+/*
+ * v2-ToC-Converter v0.3 (https://github.com/V-Squared/v2-ToC-Converter)
+ * Dependencies: jQuery
+ * Demo: https://v-squared.github.io/v2-ToC-Converter/
+ * Issues: https://github.com/V-Squared/v2-ToC-Converter/issues
+ * Docs: https://github.com/V-Squared/V-Squared.github.io/issues/130
+ * Author: Lukas Chen (https://github.com/LukasChen)
+ * Licensed under MIT (https://github.com/V-Squared/v2-ToC-Converter/blob/gh-pages/LICENSE)
+ */
+
 // Select Plugin
 
 $.fn.clickSelect = function(element) {
