@@ -101,4 +101,6 @@ $("#reset").click(function() {
   $("#resultYml").text("YAML ToC will show here");
   $("#resultMarkdown").text("Markdown Toc will show here");
 });
-$("#select").clickSelect("input");
+$("#selectJson").clickSelect("result");
+$("#selectYAML").clickSelect("resultYml");
+$("#selectMarkdown").clickSelect("resultMarkdown");
