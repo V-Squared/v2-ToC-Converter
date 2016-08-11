@@ -95,8 +95,10 @@ $('#convert').click(function() {
   $("#result").html(JSON.stringify(mylist));
 });
 $("#reset").click(function() {
+  $(".list").empty();
   $("#input").val("Insert your ToC as HTML ul list");
   $("#result").text("JSON ToC will show here");
   $("#resultYml").text("YAML ToC will show here");
+  $("#resultMarkdown").text("Markdown Toc will show here");
 });
 $("#select").clickSelect("input");
