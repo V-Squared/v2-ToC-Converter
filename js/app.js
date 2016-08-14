@@ -30,87 +30,122 @@ $.fn.clickSelect = function(element) {
   })
 };
 
-$('#convert').click(function() {
-  var mylist = [];
+// ------------------
+// events
+// ------------------
 
-  var yml = "contents:";
+$('#convert').click(convert);
+$("#reset").click(reset);
 
-  var markdown = "";
-
-  var result = $.parseHTML($('textarea').val());
-
-  $(".list").empty();
-
-  $(".list").append(result);
-
-  console.log(result);
-
-  $("div.list > ul > li > a").each(function() {
-
-    if ($(this).next().is("ul")) {
-
-      var subitem = [];
-      var subitemYml = "\n    subitems:";
-      var subitemMarkdown = "";
-      $($(this).next().children("li").children("a")).each(function() {
-        var href = $(this).attr("href").replace("#",'');
-
-        subitemYml += "\n      - name: " + $(this).text() + "\n        url: " + href;
-
-        subitemMarkdown += "  - [" + $(this).text() + "](#" + href + ")\n";
-
-        subitem.push({
-          "name": $(this).text(),
-          "url": href
-        })
-      });
-
-      var href = $(this).attr("href").replace("#",'');
-
-      yml += "\n  - name: " + $(this).text() + "\n    url: " + href + subitemYml;
-
-      markdown += "- [" + $(this).text() + "](#" + href + ")\n" + subitemMarkdown;
-
-      mylist.push({
-        "name": $(this).text(),
-        "url": href,
-        "subitems": subitem
-      });
-
-    } else {
-      var href = $(this).attr("href").replace("#",'');
-
-      yml += "\n  - name: " + $(this).text() + "\n    url: " + href;
-
-      markdown += "- [" + $(this).text() + "](#" + href + ")\n";
-
-      console.log(markdown);
-
-      mylist.push({
-        "name": $(this).text(),
-        "url": href
-      });
-    }
-
-  });
-
-  $("#resultYml").empty();
-
-  $("#resultYml").text(yml);
-
-  $("#resultMarkdown").text(markdown);
-
-// for result only
-  $("#result").empty();
-  $("#result").html(JSON.stringify(mylist));
-});
-$("#reset").click(function() {
-  $(".list").empty();
-  $("#input").val("Insert your ToC as HTML ul list");
-  $("#result").text("JSON ToC will show here");
-  $("#resultYml").text("YAML ToC will show here");
-  $("#resultMarkdown").text("Markdown Toc will show here");
-});
-$("#selectJson").clickSelect("result");
+// Copy
+$("#selectJson").clickSelect("resultJson");
 $("#selectYAML").clickSelect("resultYml");
 $("#selectMarkdown").clickSelect("resultMarkdown");
+
+
+
+// --------------
+// Click callback
+// --------------
+
+function convert () {
+
+  // output var
+  var jsonOutput = [],
+      ymlOutput = "contents:\n",
+      markdownOutput = "";
+
+  // parseHTML
+  var inputHTML = $.parseHTML($("#input").val());
+
+  // if there is any children <li>
+  if($(inputHTML).children("li").length) {
+    $(inputHTML).children("li").each(function() {
+      // assign to variable to convert to string instead of [object,object]
+      var json = loopList($(this)).json,
+          yml = loopList($(this)).yml,
+          markdown = loopList($(this)).markdown;
+
+      // add item to output
+      jsonOutput.push(json);
+      ymlOutput += yml;
+      markdownOutput += markdown;
+    });
+  } else {
+    console.error("There need to be a <li> in the list!! or there is no <ul> at all!!");
+  }
+
+  //--------------
+  //Render List
+  //--------------
+
+  var $list = $(".list");
+
+  // reset list
+  $list.empty();
+
+  // append list
+  $list.append(inputHTML);
+
+  //---------------
+  //Render Output
+  //---------------
+
+  console.log(markdownOutput);
+
+  
+  $("#resultJson").html(JSON.stringify(jsonOutput));
+  $("#resultYml").html(ymlOutput);
+  $("#resultMarkdown").html(markdownOutput);
+
+}
+
+function reset () {
+  $(".list").empty();
+  $("#input").val("Insert your ToC as HTML ul list");
+  $("#resultJson").text("JSON ToC will show here");
+  $("#resultYml").text("YAML ToC will show here");
+  $("#resultMarkdown").text("Markdown Toc will show here");
+}
+
+function loopList (node) {
+  var aNode = node.children("a:first");
+
+  var parentLength = node.parents("ul").length;
+
+  parentLength -= 1;
+
+  var ymlSpaces = convertToSpace(parentLength,"    ");
+  var markdownSpaces = convertToSpace(parentLength,"  ");
+
+  var retVal = {
+    json: {
+      "url": aNode.attr("href").replace("#",""),
+      "name": aNode.text()
+    },
+    yml: "  " + ymlSpaces + "- name: " + aNode.text() + "\n" +  "  " + ymlSpaces + "  url: " + aNode.attr("href").replace("#","") + "\n",
+    markdown: markdownSpaces + "- [" + aNode.text() + "](" + aNode.attr("href") + ")\n"
+  };
+
+  node.find("> ul > li").each(function() {
+    if (!retVal.json.hasOwnProperty("subitems")) {
+      retVal.json.subitems = [];
+      retVal.yml += "  " + ymlSpaces + "  subitems:\n"
+    }
+    retVal.json.subitems.push(loopList($(this)).json);
+    retVal.yml += loopList($(this)).yml;
+    retVal.markdown += loopList($(this)).markdown;
+  });
+
+  return retVal;
+}
+
+function convertToSpace(spaces,spaceNumber) {
+  var string = "";
+  var spaceNumber = spaceNumber || "  ";
+  for (var i = 0; i < spaces; i++) {
+    // Plus 4 space for yml and markdown output output
+    string += spaceNumber;
+  }
+  return string;
+}
